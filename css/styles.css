@@ -6,6 +6,40 @@ body {
     padding: 0;
 }
 
+/* Global font settings */
+body {
+    font-family: Arial, sans-serif; /* Use a clean, system font */
+    font-size: 16px; /* Set a base font size */
+    line-height: 1.5; /* Improve readability */
+    color: #262626; /* Use a dark color for text */
+    -webkit-font-smoothing: antialiased; /* Smooth text rendering on WebKit browsers */
+    -moz-osx-font-smoothing: grayscale; /* Smooth text rendering on Firefox macOS */
+    text-rendering: optimizeLegibility; /* Improve legibility */
+}
+
+/* Ensure all text elements are rendered crisply */
+h1, h2, h3, h4, h5, h6, p, a {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Improve rendering of text in input and textarea elements */
+input, textarea {
+    font-family: Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Improve rendering for specific font weights if used */
+.bold-text {
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
 .container {
     display: flex;
     flex-direction: column;

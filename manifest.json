@@ -1,0 +1,16 @@
+{
+    "name": "Swiper Component Test",
+    "short_name": "SwiperTest",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#758495",
+    "theme_color": "#758495",
+    "icons": [
+      {
+        "src": "/icons/icon-192x192.svg",
+        "sizes": "192x192",
+        "type": "image/svg+xml"
+      }
+    ]
+  }
+  
