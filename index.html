@@ -4,6 +4,11 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="theme-color" content="#758495" />
+        <!-- Add this meta tag for iOS standalone mode -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <!-- Add this meta tag to control the status bar appearance -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
         <link rel="manifest" href="/manifest.json" />
         <title>Swiper Component Test</title>
         <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" />
@@ -11,7 +16,7 @@
         <link rel="stylesheet" href="components/Swiper/swiper.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
         <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>    
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     </head>
     <body>
@@ -25,13 +30,16 @@
             root.render(React.createElement(App));
 
             // Register the service worker
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                    navigator.serviceWorker.register('/service-worker.js').then(registration => {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    }, err => {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", () => {
+                    navigator.serviceWorker.register("/service-worker.js").then(
+                        (registration) => {
+                            console.log("ServiceWorker registration successful with scope: ", registration.scope);
+                        },
+                        (err) => {
+                            console.log("ServiceWorker registration failed: ", err);
+                        }
+                    );
                 });
             }
         </script>
