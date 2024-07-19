@@ -34,9 +34,9 @@ h1 {
 .event-data {
     width: 100%;
     text-align: left;
-    font-size: 0.7em;
+    font-size: 0.8rem;
     /* margin-top: 20px; */
-    height: 150px;
+    height: 110px;
     background-color: #ffffff3b;
     border-radius: 1em;
     padding: 1em;

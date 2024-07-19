@@ -191,3 +191,12 @@
     opacity: 0 !important;
 }
 
+.swipe-deck {
+    position: relative;
+    width: 150px;
+    height: 266.667px;
+    background-color: #ffffff26;
+    border-radius: 20px;
+    color: #ffffff8f;
+    text-align: center;
+}
