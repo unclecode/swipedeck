@@ -50,18 +50,18 @@ const App = () => {
 
     return (
         <div className="container">
-            <h1>Movie Swiper</h1>
+            <h1>Movie Swiper v0.1.0</h1>
             <div className="event-data">
                 <p>
-                    Swipe: Tick: {swipeData.tick}, Value: {swipeData.value?.toFixed(2)}, Direction:{" "}
-                    {swipeData.direction}, Degree: {swipeData.degree?.toFixed(2)}, Movie: {swipeData.movieTitle}
+                    <b>Swipe</b>: Tick: {swipeData.tick}, Value: {swipeData.value?.toFixed(2)}, Dir:{" "}
+                    {swipeData.direction}, Degree: {swipeData.degree?.toFixed(2)}
                 </p>
                 <p>
-                    Swiped: Tick: {swipedData.tick}, Value: {swipedData.value?.toFixed(2)}, Direction:{" "}
-                    {swipedData.direction}, Movie: {swipedData.movieTitle}
+                    Swiped: Tick: {swipedData.tick}, Value: {swipedData.value?.toFixed(2)}, Dir:{" "}
+                    {swipedData.direction}
                 </p>
                 <p>
-                    Shake: Liquid Level: {shakeData.level?.toFixed(2)}, Movie: {shakeData.movieTitle}
+                    Shake: Liquid Level: {shakeData.level?.toFixed(2)}
                 </p>
             </div>
             <div className="swiper-container">
@@ -73,7 +73,7 @@ const App = () => {
                     onDeckFinished={handleDeckFinished}
                     onSwipeUp={() => console.log("Swiped up!")}
                     cardStyle={{
-                        width: "100px",
+                        width: "150px",
                     }}
                 />
                 <SwipeDeck
@@ -84,18 +84,7 @@ const App = () => {
                     onDeckFinished={handleDeckFinished}
                     onSwipeUp={() => console.log("Swiped up!")}
                     cardStyle={{
-                        width: "100px",
-                    }}
-                />
-                <SwipeDeck
-                    movies={movies}
-                    onSwipe={handleSwipe}
-                    onSwiped={handleSwiped}
-                    onShake={handleShake}
-                    onDeckFinished={handleDeckFinished}
-                    onSwipeUp={() => console.log("Swiped up!")}
-                    cardStyle={{
-                        width: "100px",
+                        width: "150px",
                     }}
                 />
             </div>
@@ -108,7 +97,7 @@ const App = () => {
                     onDeckFinished={handleDeckFinished}
                     onSwipeUp={() => console.log("Swiped up!")}
                     cardStyle={{
-                        width: "100px",
+                        width: "150px",
                     }}
                 />
                 <SwipeDeck
@@ -119,18 +108,7 @@ const App = () => {
                     onDeckFinished={handleDeckFinished}
                     onSwipeUp={() => console.log("Swiped up!")}
                     cardStyle={{
-                        width: "100px",
-                    }}
-                />
-                <SwipeDeck
-                    movies={movies}
-                    onSwipe={handleSwipe}
-                    onSwiped={handleSwiped}
-                    onShake={handleShake}
-                    onDeckFinished={handleDeckFinished}
-                    onSwipeUp={() => console.log("Swiped up!")}
-                    cardStyle={{
-                        width: "100px",
+                        width: "150px",
                     }}
                 />
             </div>
