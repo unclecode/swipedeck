@@ -17,6 +17,15 @@ body {
     text-rendering: optimizeLegibility; /* Improve legibility */
 }
 
+body {
+    background-color: #758495;
+    /* Ensure content does not overflow */
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
 /* Ensure all text elements are rendered crisply */
 h1, h2, h3, h4, h5, h6, p, a {
     -webkit-font-smoothing: antialiased;
