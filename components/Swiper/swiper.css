@@ -60,7 +60,7 @@
     height: 120%;
     background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg"><path d="M0 30 Q75 0, 150 30 T300 30 T450 30 T600 30 T750 30 T900 30 T1050 30 T1200 30 V60 H0" fill="rgba(173, 216, 230, 0.6)"/></svg>');
     background-repeat: repeat-x;
-    animation: wave 1.5s linear infinite;
+    animation: wave 2s linear infinite;
     transform-origin: center bottom;
     transition: filter 0.3s ease;
 }
@@ -74,8 +74,12 @@
     }
 }
 
+.wave1 {
+    top: -1px;
+}
 .wave2 {
     animation-delay: -1s;
+    top: -4px;
 }
 
 .bubble-container {
