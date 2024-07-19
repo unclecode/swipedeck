@@ -1,0 +1,42 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.swiper-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    gap: 50px;
+}
+
+.event-data {
+    width: 100%;
+    text-align: left;
+    font-size: 0.7em;
+    margin-top: 20px;
+    height: 150px;
+}
+
+#root {
+    background-color: slategray;
+}
