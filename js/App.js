@@ -50,7 +50,7 @@ const App = () => {
 
     return (
         <div className="container">
-            <h1>Movie Swiper v0.1.4</h1>
+            <h1>Movie Swiper v0.1.5</h1>
             <div className="event-data">
                 <p>
                     <b>Swipe</b>: Tick: {swipeData.tick}, Value: {swipeData.value?.toFixed(2)}, Dir:{" "}

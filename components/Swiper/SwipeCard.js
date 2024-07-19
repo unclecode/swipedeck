@@ -153,14 +153,12 @@ const SwipeCard = ({
         }
 
         if (isDragging) {
-            // Calculate rotation based on the proportion of card width moved
             const cardWidth = cardWidthRef.current;
-            const rotationFactor = (deltaX / cardWidth) * 2; // Multiply by 2 for increased sensitivity
+            const rotationFactor = (deltaX / cardWidth) * 2;
             const rotation = Math.max(-45, Math.min(45, rotationFactor * 45));
 
             const swipeData = calculateSwipeData(rotation, deltaY);
 
-            // Check if the rotation has changed enough to emit a new event
             if (Math.abs(rotation - lastEmittedRotation) >= 9) {
                 onSwipe && onSwipe(swipeData);
                 setLastEmittedRotation(rotation);
@@ -168,24 +166,60 @@ const SwipeCard = ({
 
             updateSwipeSound(rotation);
 
-            const newLiquidHeight = 52 + (Math.abs(rotation) / 45) * (74 - 52);
+            // Modify liquid height calculation based on swipe direction
+            const baseHeight = 52;
+            const maxIncrease = 22; // 74 - 52
+            const maxDecrease = 22; // 52 - 30 (assuming 30 as min height)
+            let newLiquidHeight;
+
+            if (rotation > 0) {
+                // Swiping right
+                newLiquidHeight = baseHeight + (rotation / 45) * maxIncrease;
+            } else {
+                // Swiping left
+                newLiquidHeight = baseHeight - (Math.abs(rotation) / 45) * maxDecrease;
+            }
 
             if (cardRef.current) cardRef.current.style.transform = `rotate(${rotation}deg)`;
             if (liquidContainerRef.current) liquidContainerRef.current.style.transform = `rotate(${-rotation}deg)`;
             if (liquidRef.current) {
-                liquidRef.current.style.height = `${Math.max(0, Math.min(74, newLiquidHeight))}%`;
-                if (deltaX > 0) {
+                liquidRef.current.style.height = `${Math.max(30, Math.min(74, newLiquidHeight))}%`;
+
+                // New color calculation
+                if (rotation > 0) {
+                    // Swiping right (blue to green)
                     liquidRef.current.style.backgroundColor = `rgba(${152 - Math.abs(rotation)}, ${251}, ${152}, 0.6)`;
                 } else {
-                    liquidRef.current.style.backgroundColor = `rgba(${152}, ${251 - Math.abs(rotation)}, ${
-                        152 - Math.abs(rotation)
-                    }, 0.6)`;
+                    // Swiping left (blue to red)
+                    const redIntensity = Math.min(255, 173 + Math.abs(rotation) * 2);
+                    liquidRef.current.style.backgroundColor = `rgba(${redIntensity}, ${Math.max(
+                        0,
+                        216 - Math.abs(rotation) * 4
+                    )}, ${Math.max(0, 230 - Math.abs(rotation) * 4)}, 0.6)`;
                 }
 
                 const speed = Math.abs(clientX - lastX) / ((Date.now() - startTime) / 1000);
                 const waveHeight = Math.min(speed / 10, 10);
                 liquidRef.current.style.transform = `translateY(${waveHeight}px)`;
             }
+
+            // New wave color calculation
+            const waveElements = liquidRef.current.querySelectorAll(".wave");
+            let waveColor;
+            if (rotation > 0) {
+                // Swiping right (blue to green)
+                waveColor = `rgba(${152 - Math.abs(rotation)}, ${251}, ${152}, 0.6)`;
+            } else {
+                // Swiping left (blue to red)
+                const redIntensity = Math.min(255, 173 + Math.abs(rotation) * 2);
+                waveColor = `rgba(${redIntensity}, ${Math.max(0, 216 - Math.abs(rotation) * 4)}, ${Math.max(
+                    0,
+                    230 - Math.abs(rotation) * 4
+                )}, 0.6)`;
+            }
+            waveElements.forEach((wave) => {
+                wave.style.filter = `drop-shadow(0 0 0 ${waveColor})`;
+            });
         }
 
         setLastX(clientX);
@@ -229,9 +263,14 @@ const SwipeCard = ({
         }
         if (liquidRef.current) {
             liquidRef.current.style.transition = "height 0.3s ease, transform 0.5s ease, background-color 0.3s ease";
-            liquidRef.current.style.height = "52%";
+            liquidRef.current.style.height = "52%"; // Reset to initial height
             liquidRef.current.style.transform = "translateY(0)";
-            liquidRef.current.style.backgroundColor = "rgba(173, 216, 230, 0.6)";
+            liquidRef.current.style.backgroundColor = "rgba(173, 216, 230, 0.6)"; // Reset to initial blue color
+
+            const waveElements = liquidRef.current.querySelectorAll(".wave");
+            waveElements.forEach((wave) => {
+                wave.style.filter = "none";
+            });
         }
         if (!mute) {
             swipeRightAudioRef.current.fadeOut(0.3);

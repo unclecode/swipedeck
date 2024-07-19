@@ -54,19 +54,28 @@
 
 .wave {
     position: absolute;
-    top: 0;
+    top: -10px;
     left: 0;
     width: 200%;
-    height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 350 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 10 Q43.75 0, 87.5 10 T175 10 T262.5 10 T350 10 V20 H0" fill="rgba(173, 216, 230, 0.6)"/></svg>');
-    animation: wave 4s linear infinite;
+    height: 120%;
+    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg"><path d="M0 30 Q75 0, 150 30 T300 30 T450 30 T600 30 T750 30 T900 30 T1050 30 T1200 30 V60 H0" fill="rgba(173, 216, 230, 0.6)"/></svg>');
+    background-repeat: repeat-x;
+    animation: wave 1.5s linear infinite;
     transform-origin: center bottom;
-    transition: background-color 0.3s ease;
+    transition: filter 0.3s ease;
+}
+
+@keyframes wave {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-600px); /* Half of the SVG viewBox width */
+    }
 }
 
 .wave2 {
-    left: 100%;
-    animation-delay: -2s;
+    animation-delay: -1s;
 }
 
 .bubble-container {
@@ -84,15 +93,6 @@
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 50%;
     animation: rise 4s infinite ease-in;
-}
-
-@keyframes wave {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
 }
 
 @keyframes rise {
